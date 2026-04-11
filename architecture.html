@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture | FiatRails Settlement</title>
+    <meta name="description" content="Technical architecture overview of FiatRails Settlement infrastructure.">
+    <link rel="icon" type="image/png" href="https://fiatrails.com/favicon_32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --navy: #1e3a5a;
+            --navy-dark: #0f2744;
+            --navy-light: #2d5a87;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--gray-800);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        code, .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo { height: 62px; }
+        .nav-brand-text { font-size: 18px; font-weight: 600; color: var(--gray-900); }
+        .nav-brand-divider { width: 1px; height: 24px; background: var(--gray-300); margin: 0 12px; }
+        .nav-brand-sub { font-size: 14px; color: var(--gray-500); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover { color: var(--gray-900); }
+
+        .nav-cta {
+            background: var(--navy);
+            color: var(--white) !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 64px 24px 96px;
+        }
+
+        .page-header {
+            margin-bottom: 56px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .page-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+
+        .page-desc {
+            font-size: 17px;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .section {
+            margin-bottom: 56px;
+        }
+
+        .section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .section > p {
+            font-size: 15px;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .diagram-box {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 40px;
+            margin: 24px 0;
+        }
+
+        .diagram-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .flow-box {
+            flex: 1;
+            padding: 20px 16px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .flow-box.highlight {
+            background: var(--navy);
+            border-color: var(--navy);
+            color: var(--white);
+        }
+
+        .flow-box h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .flow-box.highlight h4 { color: var(--white); }
+        .flow-box p { font-size: 12px; color: var(--gray-500); margin: 0; }
+        .flow-box.highlight p { color: rgba(255,255,255,0.7); }
+
+        .flow-arrow {
+            color: var(--gray-400);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .spec {
+            padding: 20px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+        }
+
+        .spec-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .spec-value {
+            font-size: 14px;
+            color: var(--gray-800);
+            line-height: 1.5;
+        }
+
+        .principles-list {
+            list-style: none;
+        }
+
+        .principles-list li {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .principles-list li:last-child { border-bottom: none; }
+
+        .principles-list h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .principles-list p {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .cta-box {
+            background: var(--navy);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 56px;
+        }
+
+        .cta-box h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            padding: 12px 28px;
+            background: var(--white);
+            color: var(--navy);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .btn:hover { background: var(--gray-100); }
+
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 64px 24px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-powered {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--gray-700);
+        }
+
+        .powered-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .powered-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+        }
+
+        .powered-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .powered-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .powered-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--gray-400);
+            max-width: 360px;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        @media (max-width: 768px) {
+            .footer-powered {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .main { padding: 48px 16px 64px; }
+            .page-title { font-size: 28px; }
+            .specs-grid { grid-template-columns: 1fr; }
+            .flow { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+        }
+    
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--navy);
+            color: var(--white);
+            padding: 20px;
+            z-index: 9999;
+        }
+        .cookie-banner.show { display: block; }
+        .cookie-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .cookie-text { flex: 1; font-size: 14px; line-height: 1.5; }
+        .cookie-text a { color: var(--accent); }
+        .cookie-buttons { display: flex; gap: 12px; }
+        .cookie-btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+        }
+        .cookie-btn-accept {
+            background: var(--white);
+            color: var(--navy);
+        }
+        .cookie-btn-decline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gray-400);
+        }
+        @media (max-width: 768px) {
+            .cookie-inner { flex-direction: column; text-align: center; }
+            .cookie-buttons { width: 100%; justify-content: center; }
+        }
+
+    
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            padding: 48px 32px 24px;
+            color: var(--gray-400);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 12px;
+            color: var(--gray-500);
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-300);
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 13px;
+            color: var(--gray-500);
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover { color: var(--gray-300); }
+
+        .footer-powered {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .powered-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .powered-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+        }
+
+        .powered-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .powered-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .powered-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--gray-400);
+            max-width: 360px;
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+            .footer-powered {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">
+                <img src="logo-navy-tm.png" alt="FiatRails" class="nav-logo">
+                
+                <span class="nav-brand-divider"></span>
+                <span class="nav-brand-sub">Settlement</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Overview</a>
+                <a href="apply.html">Pilot Programme</a>
+                <a href="https://fiatrails.com">Main Site</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="page-header">
+            <div class="page-label">Technical Documentation</div>
+            <h1 class="page-title">Architecture Overview</h1>
+            <p class="page-desc">High-level technical overview of FiatRails Settlement infrastructure. Comprehensive documentation is available under NDA for qualified pilot participants.</p>
+        </div>
+
+        <section class="section">
+            <h2>Settlement Process</h2>
+            <p>Obligations are recorded throughout the settlement window, netted at window close, and settled as a single consolidated transaction across all participating institutions.</p>
+            
+            <div class="diagram-box">
+                <div class="diagram-label">Netting Flow</div>
+                <div class="flow">
+                    <div class="flow-box">
+                        <h4>Record</h4>
+                        <p>Via API</p>
+                    </div>
+                    <span class="flow-arrow">&rarr;</span>
+                    <div class="flow-box highlight">
+                        <h4>Net</h4>
+                        <p>Multilateral</p>
+                    </div>
+                    <span class="flow-arrow">&rarr;</span>
+                    <div class="flow-box">
+                        <h4>Price</h4>
+                        <p>Oracle</p>
+                    </div>
+                    <span class="flow-arrow">&rarr;</span>
+                    <div class="flow-box">
+                        <h4>Settle</h4>
+                        <p>Net only</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Core Components</h2>
+            <div class="specs-grid">
+                <div class="spec">
+                    <div class="spec-label">Netting Engine</div>
+                    <div class="spec-value">Multi-corridor parallel netting with O(n) complexity</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Oracle Layer</div>
+                    <div class="spec-value">Deterministic FX rates at window close</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Integration</div>
+                    <div class="spec-value">REST API and native ISO 20022 support</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Consensus</div>
+                    <div class="spec-value">Avalanche Subnet with permissioned validators</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Settlement Claims</div>
+                    <div class="spec-value">sXXX tokens (non-transferable, institution-only)</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Compliance Layer</div>
+                    <div class="spec-value">Full audit trail with sanctions screening hooks</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Design Principles</h2>
+            <ul class="principles-list">
+                <li>
+                    <h4>Non-Custodial</h4>
+                    <p>FiatRails coordinates settlement instructions but never holds customer funds. All regulated activities remain with licensed institutional partners.</p>
+                </li>
+                <li>
+                    <h4>Corridor Isolation</h4>
+                    <p>Each corridor operates independently with its own settlement windows, participant lists, and compliance rules. Failures in one corridor do not propagate.</p>
+                </li>
+                <li>
+                    <h4>Deterministic Execution</h4>
+                    <p>FX rates are determined at window close, not executed in market. Oracle prices are locked, ensuring no slippage or front-running possibilities.</p>
+                </li>
+                <li>
+                    <h4>Technology Service Provider</h4>
+                    <p>FiatRails is a non-custodial coordination protocol — not a bank, PSP, E-money issuer, or remittance company. We never hold fiat, never custody user funds, and never execute settlement. All regulated activities are performed exclusively by licensed partner institutions. FiatRails operates as technology infrastructure only.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Infrastructure Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec">
+                    <div class="spec-label">Network</div>
+                    <div class="spec-value">Lagrange L1 (Avalanche Subnet)</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Finality</div>
+                    <div class="spec-value">Sub-second (&lt;1s)</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Throughput</div>
+                    <div class="spec-value">4,500+ transactions per second per corridor</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Gas Token</div>
+                    <div class="spec-value">FSC (utility only, zero market value)</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-box">
+            <h3>Full documentation under NDA</h3>
+            <p>Detailed API specifications, integration guides, and compliance documentation are available for qualified pilot participants.</p>
+            <a href="apply.html" class="btn">Enquire About Access</a>
+        </div>
+    </main>
+
+        <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="logo-navy-tm.png" alt="FiatRails" style="height: 42px; filter: brightness(0) invert(1);">
+                    <p>Non-custodial infrastructure enabling seamless access to virtual assets. Technology service provider — never custodying funds.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <a href="https://fiatrails.com/access.html">Access</a>
+                    <a href="https://fiatrails.network">Settlement</a>
+                    <a href="https://fiatrails.com/#demo">Demo</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="https://fiatrails.com/#about">About</a>
+                    <a href="https://fiatrails.com/blog">Blog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="https://t.me/FiatRails_Bot">Telegram</a>
+                    <a href="https://twitter.com/fiatrails">Twitter</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="https://fiatrails.com/terms.html">Terms of Service</a>
+                    <a href="https://fiatrails.com/privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+
+            <div class="footer-powered">
+                <div class="powered-item">
+                    <span class="powered-label">POWERED BY</span>
+                    <div class="powered-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="16" fill="#E84142"/>
+                            <path d="M21.5 21H18.5L16 16.5L13.5 21H10.5L16 11L21.5 21Z" fill="white"/>
+                        </svg>
+                        <span class="powered-name">Avalanche</span>
+                    </div>
+                    <p class="powered-desc">FiatRails is built on Avalanche infrastructure. Sub-second finality, low fees, and enterprise-grade reliability for virtual asset infrastructure.</p>
+                </div>
+
+                <div class="powered-item">
+                    <span class="powered-label">BUILT BY</span>
+                    <div class="powered-logo">
+                        <a href="https://digitalyzelabs.com" target="_blank" rel="noopener noreferrer">
+                            <img src="digitalyze-labs-logo.png" alt="Digitalyze Labs" style="height: 28px; width: auto;">
+                        </a>
+                    </div>
+                    <p class="powered-desc">Enterprise blockchain development and fintech infrastructure specialists.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2025-2026 FiatRails. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-inner">
+            <div class="cookie-text">
+                We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.
+                <a href="privacy.html">Learn more</a>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept</button>
+                <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">Decline</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Cookie consent
+        function setCookie(name, value, days) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+        }
+        function getCookie(name) {
+            return document.cookie.split('; ').reduce((r, v) => {
+                const parts = v.split('=');
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, '');
+        }
+        function acceptCookies() {
+            setCookie('cookieConsent', 'accepted', 365);
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+        function declineCookies() {
+            setCookie('cookieConsent', 'declined', 365);
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+        // Show banner if no consent cookie
+        if (!getCookie('cookieConsent')) {
+            document.getElementById('cookieBanner').classList.add('show');
+        }
+    </script>
+
+</body>
+</html>
