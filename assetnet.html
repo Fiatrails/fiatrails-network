@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid | Settlement Computer</title>
-    <meta name="description" content="Energy settlement and circular debt resolution. Time-indexed netting windows aligned to energy delivery periods for utilities, grid operators, and energy traders.">
+    <title>AssetNet | Settlement Computer</title>
+    <meta name="description" content="Tokenized financial asset netting with atomic delivery-versus-payment compression. Multilateral netting of tokenized securities — treasuries, bonds, equities, repos, MMFs.">
     <link rel="icon" type="image/png" href="https://fiatrails.com/favicon_32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -72,54 +72,54 @@
 
     <section class="hero"><div class="hero-inner">
         <span class="hero-badge design">Design Phase</span>
-        <h1>Grid</h1>
-        <p>Energy settlement and circular debt resolution. Time-indexed netting windows aligned to energy delivery periods for utilities, grid operators, and energy traders.</p>
+        <h1>AssetNet</h1>
+        <p>Tokenized financial asset netting with atomic delivery-versus-payment compression. Multilateral netting of tokenized securities with paired DVP legs — treasuries, bonds, equities, repos, and money market funds.</p>
         <a href="index.html#products" class="back-link">&larr; Back to Products</a>
     </div></section>
 
     <!-- CONCEPT -->
     <section style="background:var(--gray-50);padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center">
         <div class="section-label">Concept</div>
-        <h2 class="section-title">Multilateral netting for energy markets</h2>
-        <p class="section-desc">Energy markets generate dense webs of bilateral obligations between generators, distributors, traders, and consumers. Circular debt — where A owes B, B owes C, and C owes A — is endemic, particularly in emerging markets. Grid applies multilateral netting to energy settlement, resolving circular debt and reducing the gross payment volume between market participants.</p>
+        <h2 class="section-title">Netting for tokenized capital markets</h2>
+        <p class="section-desc">Tokenized securities settle bilaterally and gross — every trade is a separate delivery-versus-payment instruction. The global repo market alone processes $350 billion per day with zero multilateral netting. AssetNet applies the Settlement Computer's netting engine to tokenized financial assets, compressing DVP obligations across counterparties while preserving atomic delivery guarantees.</p>
     </div></section>
 
     <!-- PLANNED CAPABILITIES -->
     <section style="padding:80px 32px"><div style="max-width:1000px;margin:0 auto">
         <div class="section-header">
             <div class="section-label">Planned Capabilities</div>
-            <h2 class="section-title">What Grid will deliver</h2>
+            <h2 class="section-title">What AssetNet will deliver</h2>
         </div>
         <div class="features-grid">
             <div class="feature">
                 <div class="feature-num">01</div>
-                <h4>Time-indexed netting windows</h4>
-                <p>Netting windows aligned to energy delivery periods — hourly, daily, or monthly settlement cycles matching market structure. Obligations grouped by delivery period for accurate compression.</p>
+                <h4>DVP-aware multilateral netting</h4>
+                <p>Multilateral netting that understands paired delivery-versus-payment legs. Cash and asset legs are compressed together, maintaining atomic settlement guarantees across all netted positions.</p>
             </div>
             <div class="feature">
                 <div class="feature-num">02</div>
-                <h4>Circular debt resolution</h4>
-                <p>Automated detection and resolution of circular debt chains. Multilateral netting eliminates circular obligations in a single atomic operation, releasing trapped liquidity across the entire chain.</p>
+                <h4>Cross-asset correlation offset</h4>
+                <p>Obligations in correlated assets are offset against each other. A treasury position can partially offset a bond position where correlation thresholds are met, reducing net settlement obligations further.</p>
             </div>
             <div class="feature">
                 <div class="feature-num">03</div>
-                <h4>Generator-to-consumer tracking</h4>
-                <p>End-to-end obligation tracking from energy generation through transmission, distribution, and retail consumption. Netting applied at each layer with full provenance preserved.</p>
+                <h4>Securities lifecycle awareness</h4>
+                <p>Obligation generation respects the full securities lifecycle — corporate actions, coupon payments, maturity events, and redemptions are factored into netting window calculations.</p>
             </div>
             <div class="feature">
                 <div class="feature-num">04</div>
-                <h4>Capacity market settlement</h4>
-                <p>Settlement of capacity market obligations — availability payments, capacity credits, and penalty calculations. Netting across capacity and energy obligations for the same counterparty pairs.</p>
+                <h4>Cross-custodian netting</h4>
+                <p>Netting across multiple custodians holding the same asset class. Participants using different custody providers can still benefit from multilateral compression of their DVP obligations.</p>
             </div>
             <div class="feature">
                 <div class="feature-num">05</div>
-                <h4>Renewable energy certificates</h4>
-                <p>On-chain tracking and settlement of renewable energy certificates (RECs) and guarantees of origin. Certificate lifecycle from issuance through retirement with netting of associated payments.</p>
+                <h4>Blockchain finality-gated settlement</h4>
+                <p>Settlement execution is gated on confirmed blockchain finality of both cash and asset legs. No settlement instruction is dispatched until both sides have achieved irreversible on-chain confirmation.</p>
             </div>
             <div class="feature">
                 <div class="feature-num">06</div>
-                <h4>Cross-market aggregation</h4>
-                <p>Obligations from day-ahead, intraday, and balancing markets aggregated into unified netting windows. Cross-market compression for participants active across multiple trading venues.</p>
+                <h4>Privacy-preserving DVP</h4>
+                <p>Pedersen commitments and Bulletproofs extended to DVP obligations. Counterparties see only their own positions. Netting is computed homomorphically on encrypted values without revealing individual trades.</p>
             </div>
         </div>
     </div></section>
@@ -127,51 +127,53 @@
     <!-- MARKET -->
     <section style="background:var(--navy);padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center;color:var(--white)">
         <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:12px">Addressable Market</div>
-        <div style="font-size:48px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px">$8.8T/yr</div>
-        <p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.7">Global energy market settlement volume. Circular debt alone exceeds $100 billion in emerging markets, with Pakistan, Nigeria, and Turkey among the most affected.</p>
+        <div style="font-size:48px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px">$350B/day</div>
+        <p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.7">Global repo market daily volume — currently settled bilaterally with zero multilateral netting. Tokenized treasuries, bonds, and money market funds are growing rapidly with no netting infrastructure in place.</p>
     </div></section>
 
-    <!-- USE CASES -->
+    <!-- ASSET CLASSES -->
     <section style="padding:80px 32px"><div style="max-width:800px;margin:0 auto">
         <div class="section-header">
-            <div class="section-label">Applications</div>
-            <h2 class="section-title">Where Grid applies</h2>
+            <div class="section-label">Asset Classes</div>
+            <h2 class="section-title">Supported instrument types</h2>
         </div>
         <div class="two-col">
             <div class="info-card">
-                <h4>Emerging market circular debt</h4>
-                <p>In markets like Pakistan and Nigeria, circular debt between government, utilities, generators, and fuel suppliers traps billions in liquidity. Grid's multilateral netting resolves these chains automatically.</p>
+                <h4>Fixed income</h4>
+                <p>Tokenized treasuries, government bonds, corporate bonds, and money market fund shares. DVP netting across issuers with maturity-aware bucketing.</p>
                 <ul class="info-list">
-                    <li>Government-to-utility-to-generator chains</li>
-                    <li>Fuel subsidy offset netting</li>
-                    <li>Multi-party circular debt resolution</li>
+                    <li>Tokenized U.S. Treasuries</li>
+                    <li>Government and corporate bonds</li>
+                    <li>Money market fund shares</li>
+                    <li>Repo and reverse repo</li>
                 </ul>
             </div>
             <div class="info-card">
-                <h4>Wholesale energy markets</h4>
-                <p>Developed market energy exchanges settle billions daily across day-ahead, intraday, and balancing markets. Grid compresses these bilateral obligations into net positions.</p>
+                <h4>Equities and derivatives</h4>
+                <p>Tokenized equity settlement with cross-asset offset against fixed income positions where correlation thresholds are met.</p>
                 <ul class="info-list">
-                    <li>Day-ahead and intraday market netting</li>
-                    <li>Balancing market settlement</li>
-                    <li>Cross-border interconnector flows</li>
+                    <li>Tokenized equities</li>
+                    <li>Securities lending obligations</li>
+                    <li>Cross-asset correlation offset</li>
+                    <li>Corporate action sequencing</li>
                 </ul>
             </div>
         </div>
     </div></section>
 
     <!-- FX ORACLE -->
-    <section style="padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center">
+    <section style="background:var(--gray-50);padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center">
         <div class="section-label">FX Pricing</div>
         <h3 style="font-size:22px;font-weight:700;color:var(--gray-900);margin:12px 0 16px">Oracle-determined FX rates</h3>
-        <p style="font-size:15px;color:var(--gray-600);line-height:1.7">All Settlement Computer products use FX rate feeds from <a href="https://afxo.ai" style="color:var(--navy);font-weight:500;text-decoration:none">AFXO</a> — an institutional-grade FX oracle delivering deterministic rate feeds across global currency pairs. Cross-border energy obligations are priced at the oracle rate at netting window close.</p>
+        <p style="font-size:15px;color:var(--gray-600);line-height:1.7">All Settlement Computer products use FX rate feeds from <a href="https://afxo.ai" style="color:var(--navy);font-weight:500;text-decoration:none">AFXO</a> — an institutional-grade FX oracle delivering deterministic rate feeds across global currency pairs. Cross-currency DVP obligations are priced at the oracle rate at netting window close.</p>
     </div></section>
 
     <!-- PATENTS -->
-    <section style="background:var(--gray-50);padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center">
+    <section style="padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center">
         <div class="section-label">Intellectual Property</div>
         <h3 style="font-size:22px;font-weight:700;color:var(--gray-900);margin:12px 0 20px">Patent protected</h3>
         <div style="max-width:320px;margin:0 auto">
-            <div style="background:var(--white);border:1px solid var(--gray-200);border-radius:8px;padding:20px;text-align:left"><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px">PROV-003</div><div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:4px">64/013,031</div><div style="font-size:13px;color:var(--gray-500)">Grid — Maturity-Aware + Temporal Netting</div></div>
+            <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:20px;text-align:left"><div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:8px">PROV-006</div><div style="font-size:14px;font-weight:500;color:var(--gray-900);margin-bottom:4px">64/044,001</div><div style="font-size:13px;color:var(--gray-500)">Tokenized Asset Netting — 106 claims, 26 invention families</div></div>
         </div>
     </div></section>
 
