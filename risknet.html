@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RiskNet | Settlement Computer</title>
-    <meta name="description" content="Closed-loop admission control and real-time exposure monitoring for institutional settlement. Pre-trade risk limits enforced at consensus level.">
+    <meta name="description" content="Protocol-native risk intelligence for institutional settlement. 25 algorithms, closed-loop admission control, CPMI-IOSCO PFMI compliance monitoring — live on testnet across 11 corridors.">
     <link rel="icon" type="image/png" href="https://fiatrails.com/favicon_32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -71,80 +71,100 @@
     <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="logo-navy-tm.png" alt="FiatRails" class="nav-logo"><span class="nav-divider"></span><span class="nav-product">Settlement Computer</span></a><div class="nav-links"><a href="https://fiatrails.com">Main Site</a><a href="https://fiatrails.foundation">Foundation</a><a href="index.html#products">Products</a><a href="architecture.html">Architecture</a><a href="apply.html" class="nav-cta">Request Briefing</a></div></div></nav>
 
     <section class="hero"><div class="hero-inner">
-        <span class="hero-badge design">Design Phase</span>
+        <span class="hero-badge design" style="background:rgba(5,150,105,0.1);color:#059669;border:1px solid rgba(5,150,105,0.3)">Live on Testnet</span>
         <h1>RiskNet</h1>
-        <p>Closed-loop admission control and real-time exposure monitoring. Pre-trade risk limits enforced at consensus level before obligations enter the netting engine.</p>
+        <p>Protocol-native risk intelligence running 25 algorithms every 30 seconds across 11 corridors. Closed-loop admission control, real-time counterparty scoring, systemic risk monitoring, and CPMI-IOSCO PFMI compliance — enforced at the protocol level, not advisory.</p>
         <a href="index.html#products" class="back-link">&larr; Back to Products</a>
+    </div></section>
+
+    <!-- LIVE METRICS -->
+    <section style="background:var(--navy);padding:60px 32px"><div style="max-width:1000px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:32px">
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:12px">Testnet Metrics</div>
+            <h2 style="font-size:32px;font-weight:700;color:white;letter-spacing:-.02em">Live risk intelligence</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:20px;text-align:center">
+                <div style="font-size:28px;font-weight:700;color:white;margin-bottom:4px">1M+</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6)">risk scores computed</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:20px;text-align:center">
+                <div style="font-size:28px;font-weight:700;color:white;margin-bottom:4px">48</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6)">institutions identified</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:20px;text-align:center">
+                <div style="font-size:28px;font-weight:700;color:white;margin-bottom:4px">25</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6)">algorithms every 30 seconds</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:20px;text-align:center">
+                <div style="font-size:28px;font-weight:700;color:white;margin-bottom:4px">10,161</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6)">netting windows analyzed</div>
+            </div>
+        </div>
     </div></section>
 
     <!-- CONCEPT -->
     <section style="background:var(--gray-50);padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center">
-        <div class="section-label">Concept</div>
+        <div class="section-label">Architecture</div>
         <h2 class="section-title">Risk before settlement</h2>
-        <p class="section-desc">Traditional settlement systems apply risk checks after the fact. RiskNet inverts this model: exposure limits, counterparty credit assessments, and corridor capacity checks are enforced at the consensus layer before obligations are accepted into a netting window.</p>
+        <p class="section-desc">Traditional settlement systems apply risk checks after the fact. RiskNet inverts this model: every obligation passes through closed-loop admission control before entering a netting window. Exposure limits, counterparty credit assessments, and systemic risk scores are computed continuously and enforced at the protocol level.</p>
     </div></section>
 
-    <!-- PLANNED CAPABILITIES -->
+    <!-- CAPABILITIES -->
     <section style="padding:80px 32px"><div style="max-width:1000px;margin:0 auto">
         <div class="section-header">
-            <div class="section-label">Planned Capabilities</div>
-            <h2 class="section-title">What RiskNet will deliver</h2>
+            <div class="section-label">Capabilities</div>
+            <h2 class="section-title">25 algorithms across four risk domains</h2>
         </div>
         <div class="features-grid">
             <div class="feature">
-                <div class="feature-num">01</div>
-                <h4>Per-participant exposure limits</h4>
-                <p>Configurable gross and net exposure caps per participant, per corridor. Obligations exceeding limits are rejected at the precompile level before entering the netting pool.</p>
+                <div class="feature-num">COUNTERPARTY (6)</div>
+                <h4>Counterparty risk scoring</h4>
+                <p>Composite CRS, Historical VaR (95%/99%), Expected Shortfall (CVaR 97.5%), Wrong-Way Risk (BCBS 261), Peer Benchmarking, and Admission Advisory with 4-band decisions.</p>
             </div>
             <div class="feature">
-                <div class="feature-num">02</div>
-                <h4>Real-time position monitoring</h4>
-                <p>Continuous tracking of bilateral and multilateral positions across all active corridors. Exposure dashboards for participants and corridor administrators.</p>
+                <div class="feature-num">CORRIDOR (5)</div>
+                <h4>Corridor risk intelligence</h4>
+                <p>CRI composite, HHI concentration index, compression volatility tracking, Bayesian settlement failure probability, and Z-score statistical anomaly detection.</p>
             </div>
             <div class="feature">
-                <div class="feature-num">03</div>
-                <h4>Counterparty credit scoring</h4>
-                <p>On-chain credit assessment based on settlement history, obligation fulfilment rates, and position volatility. Feeds into admission decisions for high-value obligations.</p>
+                <div class="feature-num">SYSTEMIC (11)</div>
+                <h4>Network and systemic risk</h4>
+                <p>DebtRank/SRI, Multiplex DebtRank (11 layers), netting efficiency, Shannon entropy, K-Shell decomposition, graph centrality (5 metrics), critical node detection, temporal analysis, and Cover-2/3/Reverse stress tests.</p>
             </div>
             <div class="feature">
-                <div class="feature-num">04</div>
-                <h4>Corridor capacity management</h4>
-                <p>Per-corridor throughput limits and queue management. Prevents corridor saturation during peak settlement periods while maintaining fairness across participants.</p>
+                <div class="feature-num">REGULATORY (3)</div>
+                <h4>Regulatory compliance</h4>
+                <p>BCBS 248 intraday liquidity measurements, Early Warning Score, and EWMA predictive scoring. CPMI-IOSCO PFMI Principles 4, 7, and 15 monitored in real time.</p>
             </div>
             <div class="feature">
-                <div class="feature-num">05</div>
-                <h4>Concentration risk alerts</h4>
-                <p>Automated detection of concentration risk when bilateral positions exceed configurable thresholds. Proactive notification to corridor administrators and affected participants.</p>
+                <div class="feature-num">ADMISSION</div>
+                <h4>Closed-loop admission control</h4>
+                <p>FULL_ADMIT, REDUCED, HOLD, or REJECT — enforced before obligations enter the netting engine. 71 admission decisions active, including 2 rejections and 15 holds.</p>
             </div>
             <div class="feature">
-                <div class="feature-num">06</div>
-                <h4>Regulatory reporting hooks</h4>
-                <p>Structured risk data export compatible with Basel III/IV reporting requirements. Pre-formatted for central bank supervisory submissions.</p>
+                <div class="feature-num">API</div>
+                <h4>Institutional API</h4>
+                <p>40+ authenticated, rate-limited, audit-logged endpoints. API key authentication with RBAC (ADMIN, PARTICIPANT, OBSERVER, REGULATOR). WebSocket feed for real-time updates.</p>
             </div>
         </div>
-    </div></section>
-
-    <!-- MARKET -->
-    <section style="background:var(--navy);padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center;color:var(--white)">
-        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:12px">Addressable Market</div>
-        <div style="font-size:48px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px">$4T+</div>
-        <p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.7">Global risk management and compliance market for financial institutions. RiskNet targets the intersection of settlement risk, counterparty credit risk, and regulatory reporting.</p>
     </div></section>
 
     <!-- INTEGRATION -->
     <section style="padding:80px 32px"><div style="max-width:800px;margin:0 auto">
         <div class="section-header">
-            <div class="section-label">Architecture</div>
-            <h2 class="section-title">Integrated with the Settlement Computer</h2>
+            <div class="section-label">Integration</div>
+            <h2 class="section-title">Protocol-native — not bolted on</h2>
         </div>
         <div class="two-col">
             <div class="info-card">
                 <h4>Settlement integration</h4>
-                <p>RiskNet operates as a pre-processing layer to the Settlement netting engine. Every obligation passes through RiskNet admission control before entering a netting window.</p>
+                <p>RiskNet reads live data from both the FSC-VM chain (on-chain precompiles) and the Settlement API, ingesting into TimescaleDB for continuous analysis across all 11 corridors.</p>
                 <ul class="info-list">
-                    <li>Pre-admission risk checks at consensus level</li>
-                    <li>Shared participant identity with Settlement</li>
+                    <li>Pre-admission risk checks before netting entry</li>
+                    <li>48 institutions identified with names and BICs</li>
                     <li>Cross-corridor exposure aggregation</li>
+                    <li>5,047 bilateral positions tracked</li>
                 </ul>
             </div>
             <div class="info-card">

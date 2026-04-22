@@ -992,7 +992,7 @@
         <div class="hero-inner">
             <div class="hero-content">
                 <h1>Settlement Computer</h1>
-                <p class="hero-subtitle">Eight-product settlement infrastructure suite on a dedicated Avalanche L1. Multilateral netting, micro-transaction aggregation, tokenized asset DVP, digital currency netting, cryptographic privacy, and post-quantum authentication — operating on testnet and ready for institutional evaluation.</p>
+                <p class="hero-subtitle">Eight-product settlement infrastructure suite on a dedicated Avalanche L1 — four products live on testnet. Multilateral netting, risk intelligence, micro-transaction aggregation, tokenized asset DVP netting, cryptographic privacy, and post-quantum authentication — operating continuously and ready for institutional evaluation.</p>
 
                 <div class="hero-bullets">
                     <span class="hero-bullet">
@@ -1151,12 +1151,22 @@
                 <a href="paynet.html" class="product-link">View details &rarr;</a>
             </div>
             <div class="product-card">
-                <span class="product-badge design">Design Phase</span>
+                <span class="product-badge live">Live on Testnet</span>
                 <h3>RiskNet</h3>
-                <p class="product-desc">Protocol-native risk intelligence. Closed-loop admission control and real-time counterparty exposure monitoring enforced at the VM layer — not advisory.</p>
-                <div class="product-stat"><strong>$4T</strong> cross-border market</div>
-                <div class="product-stat"><strong>Patent:</strong> PROV-002</div>
+                <p class="product-desc">Protocol-native risk intelligence. 25 algorithms computing real-time counterparty, corridor, and systemic risk scores every 30 seconds with closed-loop admission control.</p>
+                <div class="product-stat"><strong>1M+</strong> risk scores computed across 15 types</div>
+                <div class="product-stat"><strong>48 institutions</strong> identified across 11 corridors</div>
+                <div class="product-stat"><strong>CPMI-IOSCO PFMI</strong> compliance monitoring</div>
                 <a href="risknet.html" class="product-link">View details &rarr;</a>
+            </div>
+            <div class="product-card">
+                <span class="product-badge live">Live on Testnet</span>
+                <h3>AssetNet</h3>
+                <p class="product-desc">Multilateral netting for tokenized financial assets with atomic DVP compression. Paired delivery-versus-payment legs across custodians with blockchain finality-gated settlement.</p>
+                <div class="product-stat"><strong>100,000+</strong> DVP obligations ingested</div>
+                <div class="product-stat"><strong>5 corridors</strong> — 10 institutional participants</div>
+                <div class="product-stat"><strong>790+</strong> netting windows completed</div>
+                <a href="assetnet.html" class="product-link">View details &rarr;</a>
             </div>
             <div class="product-card">
                 <span class="product-badge design">Design Phase</span>
@@ -1178,18 +1188,9 @@
                 <span class="product-badge design">Design Phase</span>
                 <h3>Nexus</h3>
                 <p class="product-desc">Agentic clearing for autonomous economic agents. Machine-native settlement with causal shared state, graph-derived credit pricing, and adaptive liquidity optimisation.</p>
-                <div class="product-stat"><strong>65 claims</strong> — strongest patent</div>
+                <div class="product-stat"><strong>65 claims</strong> — 22 invention families</div>
                 <div class="product-stat"><strong>Patent:</strong> PROV-004</div>
                 <a href="nexus.html" class="product-link">View details &rarr;</a>
-            </div>
-            <div class="product-card">
-                <span class="product-badge design">Design Phase</span>
-                <h3>AssetNet</h3>
-                <p class="product-desc">Tokenized financial asset netting with atomic DVP compression. Multilateral netting of tokenized securities with paired delivery-versus-payment legs across EVM and Canton Network.</p>
-                <div class="product-stat"><strong>$350B+/day</strong> repo market (zero netting today)</div>
-                <div class="product-stat"><strong>106 claims</strong> — 26 invention families</div>
-                <div class="product-stat"><strong>Patent:</strong> PROV-006</div>
-                <a href="assetnet.html" class="product-link">View details &rarr;</a>
             </div>
             <div class="product-card">
                 <span class="product-badge design">Design Phase</span>
@@ -1230,6 +1231,24 @@
                     <div class="value-outcome">Mechanically defensible reduction in volatility premium</div>
                 </div>
                 <div class="value-card">
+                    <h4>DVP Settlement Compression</h4>
+                    <ul>
+                        <li>Multilateral netting of tokenized asset DVP obligations</li>
+                        <li>Fewer settlement instructions across custodians</li>
+                        <li>Reduced collateral and margin requirements</li>
+                    </ul>
+                    <div class="value-outcome">$350B+/day repo market settles gross today — multilateral netting reduces settlement movements, operational risk, and collateral drag</div>
+                </div>
+                <div class="value-card">
+                    <h4>Risk-Adjusted Operations</h4>
+                    <ul>
+                        <li>Real-time counterparty and systemic risk scoring</li>
+                        <li>Closed-loop admission control before obligations enter netting</li>
+                        <li>Automated stress testing (Cover-2, Cover-3, Reverse)</li>
+                    </ul>
+                    <div class="value-outcome">Risk enforced at protocol level — not advisory. Prevents exposure breaches before they enter the settlement cycle</div>
+                </div>
+                <div class="value-card">
                     <h4>ROE Improvement</h4>
                     <ul>
                         <li>Same transaction revenue</li>
@@ -1261,6 +1280,14 @@
                 <div class="audience-item">
                     <h4>Telco Wallets &amp; Super-Apps</h4>
                     <p>Mobile money operators managing high-volume flows who need efficient cross-border settlement.</p>
+                </div>
+                <div class="audience-item">
+                    <h4>Custodians &amp; Digital Asset Platforms</h4>
+                    <p>Institutional custodians settling tokenized securities bilaterally who need multilateral DVP netting to reduce settlement obligations and operational risk.</p>
+                </div>
+                <div class="audience-item">
+                    <h4>Asset Managers &amp; Broker-Dealers</h4>
+                    <p>Firms trading tokenized treasuries, bonds, and money market funds who face growing settlement volumes with no compression infrastructure.</p>
                 </div>
                 <div class="audience-item">
                     <h4>Trade Finance &amp; B2B Platforms</h4>
@@ -1321,12 +1348,20 @@
                     <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">ML-DSA (FIPS 204) post-quantum digital signatures deployed via cloudflare/circl. Modes 44/65/87, hybrid Dilithium+ECDSA, batch verification, and on-chain key registry.</p>
                 </div>
                 <div style="background: white; border: 1px solid var(--gray-200); border-radius: 8px; padding: 24px;">
+                    <h4 style="font-size: 15px; font-weight: 600; color: var(--gray-800); margin-bottom: 8px;">Protocol-Native Risk Intelligence</h4>
+                    <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">RiskNet runs 25 algorithms every 30 seconds — counterparty scoring, corridor concentration, systemic DebtRank, Cover-2/3 stress tests, and BCBS 248 intraday liquidity. Closed-loop admission control: FULL_ADMIT, REDUCED, HOLD, or REJECT.</p>
+                </div>
+                <div style="background: white; border: 1px solid var(--gray-200); border-radius: 8px; padding: 24px;">
                     <h4 style="font-size: 15px; font-weight: 600; color: var(--gray-800); margin-bottom: 8px;">ISO 20022 CBPR+ Validated</h4>
                     <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">Level 1 (schema conformance) and Level 2 (SWIFT usage guidelines) validation passed across all 5 message types: pain.001, pacs.008, pacs.002, camt.054, camt.053.</p>
                 </div>
                 <div style="background: white; border: 1px solid var(--gray-200); border-radius: 8px; padding: 24px;">
                     <h4 style="font-size: 15px; font-weight: 600; color: var(--gray-800); margin-bottom: 8px;">PFMI Self-Assessment</h4>
-                    <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">Mapped against all 24 CPMI-IOSCO Principles for Financial Market Infrastructures. Publication pending regulatory engagement.</p>
+                    <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">Mapped against all 24 CPMI-IOSCO Principles for Financial Market Infrastructures. RiskNet actively monitors Principles 4, 7, and 15 in real time.</p>
+                </div>
+                <div style="background: white; border: 1px solid var(--gray-200); border-radius: 8px; padding: 24px;">
+                    <h4 style="font-size: 15px; font-weight: 600; color: var(--gray-800); margin-bottom: 8px;">Regulatory Reporting</h4>
+                    <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">BCBS 248 intraday liquidity measurements, ISO 20022 regulatory reporting, structured risk data export, and tiered regulator view keys for supervisory access.</p>
                 </div>
             </div>
         </div>

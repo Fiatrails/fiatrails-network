@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AssetNet | Settlement Computer</title>
-    <meta name="description" content="Tokenized financial asset netting with atomic delivery-versus-payment compression. Multilateral netting of tokenized securities — treasuries, bonds, equities, repos, MMFs.">
+    <meta name="description" content="Multilateral netting for tokenized financial assets with atomic DVP compression. 100,000+ obligations across 5 corridors with 10 institutional participants — live on testnet.">
     <link rel="icon" type="image/png" href="https://fiatrails.com/favicon_32x32.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -71,24 +71,65 @@
     <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="logo-navy-tm.png" alt="FiatRails" class="nav-logo"><span class="nav-divider"></span><span class="nav-product">Settlement Computer</span></a><div class="nav-links"><a href="https://fiatrails.com">Main Site</a><a href="https://fiatrails.foundation">Foundation</a><a href="index.html#products">Products</a><a href="architecture.html">Architecture</a><a href="apply.html" class="nav-cta">Request Briefing</a></div></div></nav>
 
     <section class="hero"><div class="hero-inner">
-        <span class="hero-badge design">Design Phase</span>
+        <span class="hero-badge design" style="background:rgba(5,150,105,0.1);color:#059669;border:1px solid rgba(5,150,105,0.3)">Live on Testnet</span>
         <h1>AssetNet</h1>
-        <p>Tokenized financial asset netting with atomic delivery-versus-payment compression. Multilateral netting of tokenized securities with paired DVP legs — treasuries, bonds, equities, repos, and money market funds.</p>
+        <p>Multilateral netting for tokenized financial assets with atomic DVP compression. 100,000+ DVP obligations ingested across 5 tokenized asset corridors with 10 institutional participants — treasuries, bonds, money market funds, and repos.</p>
         <a href="index.html#products" class="back-link">&larr; Back to Products</a>
+    </div></section>
+
+    <!-- LIVE METRICS -->
+    <section style="background:var(--navy);padding:60px 32px"><div style="max-width:1000px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:32px">
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:12px">Testnet Metrics</div>
+            <h2 style="font-size:32px;font-weight:700;color:white;letter-spacing:-.02em">Live DVP netting</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:20px;text-align:center">
+                <div style="font-size:28px;font-weight:700;color:white;margin-bottom:4px">100,000+</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6)">DVP obligations ingested</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:20px;text-align:center">
+                <div style="font-size:28px;font-weight:700;color:white;margin-bottom:4px">790+</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6)">netting windows completed</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:20px;text-align:center">
+                <div style="font-size:28px;font-weight:700;color:white;margin-bottom:4px">5</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6)">tokenized asset corridors</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:20px;text-align:center">
+                <div style="font-size:28px;font-weight:700;color:white;margin-bottom:4px">10</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.6)">institutional participants</div>
+            </div>
+        </div>
     </div></section>
 
     <!-- CONCEPT -->
     <section style="background:var(--gray-50);padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center">
-        <div class="section-label">Concept</div>
+        <div class="section-label">Architecture</div>
         <h2 class="section-title">Netting for tokenized capital markets</h2>
-        <p class="section-desc">Tokenized securities settle bilaterally and gross — every trade is a separate delivery-versus-payment instruction. The global repo market alone processes $350 billion per day with zero multilateral netting. AssetNet applies the Settlement Computer's netting engine to tokenized financial assets, compressing DVP obligations across counterparties while preserving atomic delivery guarantees.</p>
+        <p class="section-desc">Tokenized securities settle bilaterally and gross — every trade is a separate delivery-versus-payment instruction. The global repo market alone processes $350 billion per day with zero multilateral netting. AssetNet compresses DVP obligations across counterparties while preserving atomic delivery guarantees.</p>
     </div></section>
 
-    <!-- PLANNED CAPABILITIES -->
-    <section style="padding:80px 32px"><div style="max-width:1000px;margin:0 auto">
+    <!-- CORRIDORS -->
+    <section style="padding:60px 32px"><div style="max-width:800px;margin:0 auto">
         <div class="section-header">
-            <div class="section-label">Planned Capabilities</div>
-            <h2 class="section-title">What AssetNet will deliver</h2>
+            <div class="section-label">Live Corridors</div>
+            <h2 class="section-title">5 tokenized asset corridors on testnet</h2>
+        </div>
+        <div style="display:grid;gap:12px">
+            <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:20px;align-items:center"><div style="font-size:15px;font-weight:700;color:var(--gray-900)">BUIDL</div><div style="font-size:13px;color:var(--gray-600)">BlackRock — USD Institutional Digital Liquidity Fund</div></div>
+            <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:20px;align-items:center"><div style="font-size:15px;font-weight:700;color:var(--gray-900)">OUSG</div><div style="font-size:13px;color:var(--gray-600)">Ondo Finance — Short-Term US Government Treasuries</div></div>
+            <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:20px;align-items:center"><div style="font-size:15px;font-weight:700;color:var(--gray-900)">BENJI</div><div style="font-size:13px;color:var(--gray-600)">Franklin Templeton — OnChain US Government Money Fund</div></div>
+            <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:20px;align-items:center"><div style="font-size:15px;font-weight:700;color:var(--gray-900)">USYC</div><div style="font-size:13px;color:var(--gray-600)">Hashnote — US Yield Coin (short-duration T-bills)</div></div>
+            <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:20px;align-items:center"><div style="font-size:15px;font-weight:700;color:var(--gray-900)">bIB01</div><div style="font-size:13px;color:var(--gray-600)">Backed Finance — Tokenized iShares Treasury Bond 0-1yr ETF</div></div>
+        </div>
+    </div></section>
+
+    <!-- CAPABILITIES -->
+    <section style="background:var(--gray-50);padding:80px 32px"><div style="max-width:1000px;margin:0 auto">
+        <div class="section-header">
+            <div class="section-label">Capabilities</div>
+            <h2 class="section-title">What AssetNet delivers</h2>
         </div>
         <div class="features-grid">
             <div class="feature">
@@ -118,44 +159,46 @@
             </div>
             <div class="feature">
                 <div class="feature-num">06</div>
-                <h4>Privacy-preserving DVP</h4>
-                <p>Pedersen commitments and Bulletproofs extended to DVP obligations. Counterparties see only their own positions. Netting is computed homomorphically on encrypted values without revealing individual trades.</p>
+                <h4>Full compliance gate</h4>
+                <p>KYB Tier 3 verification, sanctions screening, and per-corridor permissions enforced for all participants before any obligations are accepted into the netting engine.</p>
             </div>
         </div>
     </div></section>
 
     <!-- MARKET -->
-    <section style="background:var(--navy);padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center;color:var(--white)">
-        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:12px">Addressable Market</div>
-        <div style="font-size:48px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px">$350B/day</div>
-        <p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.7">Global repo market daily volume — currently settled bilaterally with zero multilateral netting. Tokenized treasuries, bonds, and money market funds are growing rapidly with no netting infrastructure in place.</p>
+    <section style="padding:60px 32px"><div style="max-width:800px;margin:0 auto;text-align:center">
+        <div class="section-label">Addressable Market</div>
+        <div style="font-size:48px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px;color:var(--gray-900)">$350B/day</div>
+        <p style="font-size:16px;color:var(--gray-600);line-height:1.7">Global repo market daily volume — currently settled bilaterally with zero multilateral netting. Tokenized treasuries, bonds, and money market funds are growing rapidly with no netting infrastructure in place.</p>
     </div></section>
 
-    <!-- ASSET CLASSES -->
+    <!-- PARTICIPANTS -->
     <section style="padding:80px 32px"><div style="max-width:800px;margin:0 auto">
         <div class="section-header">
-            <div class="section-label">Asset Classes</div>
-            <h2 class="section-title">Supported instrument types</h2>
+            <div class="section-label">Institutional Participants</div>
+            <h2 class="section-title">10 participants across 4 institution types</h2>
         </div>
         <div class="two-col">
             <div class="info-card">
-                <h4>Fixed income</h4>
-                <p>Tokenized treasuries, government bonds, corporate bonds, and money market fund shares. DVP netting across issuers with maturity-aware bucketing.</p>
+                <h4>Custodians &amp; CCPs</h4>
+                <p>Institutional custodians and central counterparties settling tokenized securities. All compliance-verified via full KYB gate with sanctions screening.</p>
                 <ul class="info-list">
-                    <li>Tokenized U.S. Treasuries</li>
-                    <li>Government and corporate bonds</li>
-                    <li>Money market fund shares</li>
-                    <li>Repo and reverse repo</li>
+                    <li>BNY Mellon Digital Assets</li>
+                    <li>State Street Digital</li>
+                    <li>Fidelity Digital Assets</li>
+                    <li>DTCC Digital Assets</li>
+                    <li>Euroclear Digital</li>
                 </ul>
             </div>
             <div class="info-card">
-                <h4>Equities and derivatives</h4>
-                <p>Tokenized equity settlement with cross-asset offset against fixed income positions where correlation thresholds are met.</p>
+                <h4>Market Makers, Broker-Dealers &amp; Asset Managers</h4>
+                <p>Buy-side and sell-side firms trading tokenized instruments who benefit from multilateral DVP compression.</p>
                 <ul class="info-list">
-                    <li>Tokenized equities</li>
-                    <li>Securities lending obligations</li>
-                    <li>Cross-asset correlation offset</li>
-                    <li>Corporate action sequencing</li>
+                    <li>Citadel Securities</li>
+                    <li>Jane Street Capital</li>
+                    <li>Goldman Sachs Digital Assets</li>
+                    <li>JP Morgan Onyx</li>
+                    <li>BlackRock Treasury</li>
                 </ul>
             </div>
         </div>
